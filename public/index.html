@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CITIBIM IoT Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Leaflet Map -->
+    <link rel="stylesheet" 
+    href="https://unpkg.com/leaflet/dist/leaflet.css">
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo-area">
+
+        <h1>CITIBIM</h1>
+
+        <p>
+            Smart Infrastructure Monitoring System
+        </p>
+
+    </div>
+
+
+    <div class="status">
+
+        <h3 id="connectionStatus">
+            🟡 Connecting...
+        </h3>
+
+        <p id="lastUpdate">
+            Last Update: --
+        </p>
+
+    </div>
+
+
+</header>
+
+
+
+<nav>
+
+<button>
+Weather Station
+</button>
+
+<button>
+Generator
+</button>
+
+<button>
+Inverter
+</button>
+
+<button>
+Solar Controller
+</button>
+
+<button>
+Battery Bank
+</button>
+
+
+</nav>
+
+
+
+<section class="cards">
+
+
+<div class="card">
+
+<h3>
+Temperature
+</h3>
+
+<p id="temperature">
+-- °C
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+Humidity
+</h3>
+
+<p id="humidity">
+-- %
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+Pressure
+</h3>
+
+<p id="pressure">
+-- Pa
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+Solar Radiation
+</h3>
+
+<p id="lux">
+-- lux
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+GPS Satellites
+</h3>
+
+<p id="satellite">
+--
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+GSM Signal
+</h3>
+
+<p id="gsm">
+--
+</p>
+
+</div>
+
+
+</section>
+
+
+
+
+<section class="charts">
+
+
+<div>
+
+<h2>
+Temperature History
+</h2>
+
+<canvas id="temperatureChart"></canvas>
+
+</div>
+
+
+
+<div>
+
+<h2>
+Solar Radiation History
+</h2>
+
+<canvas id="luxChart"></canvas>
+
+</div>
+
+
+</section>
+
+
+
+
+<section>
+
+
+<h2>
+Station Location
+</h2>
+
+
+<div id="map">
+
+</div>
+
+
+</section>
+
+
+
+
+
+<section class="health">
+
+<h2>
+System Health
+</h2>
+
+
+<p>
+SIM800L:
+<span id="simStatus">
+Checking...
+</span>
+</p>
+
+
+<p>
+GPS:
+<span id="gpsStatus">
+Checking...
+</span>
+</p>
+
+
+<p>
+Sensors:
+<span id="sensorStatus">
+Checking...
+</span>
+</p>
+
+
+
+</section>
+
+
+
+<script src="dashboard.js"></script>
+
+
+</body>
+
+</html>

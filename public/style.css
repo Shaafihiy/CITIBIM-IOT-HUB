@@ -1,0 +1,162 @@
+body {
+
+    font-family: Arial, sans-serif;
+
+    margin:0;
+
+    background:#f4f6f8;
+
+}
+
+
+
+header {
+
+    background:#003366;
+
+    color:white;
+
+    padding:20px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+
+
+.logo-area h1 {
+
+    margin:0;
+
+    font-size:40px;
+
+}
+
+
+
+nav {
+
+    padding:20px;
+
+    text-align:center;
+
+}
+
+
+
+nav button {
+
+    padding:12px 20px;
+
+    margin:5px;
+
+    border:none;
+
+    background:#0066cc;
+
+    color:white;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+}
+
+
+
+.cards {
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(200px,1fr));
+
+    gap:20px;
+
+    padding:20px;
+
+}
+
+
+
+.card {
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    text-align:center;
+
+    box-shadow:
+    0 4px 10px rgba(0,0,0,0.1);
+
+}
+
+
+
+.card p {
+
+    font-size:30px;
+
+    font-weight:bold;
+
+}
+
+
+
+.charts {
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(400px,1fr));
+
+    gap:20px;
+
+    padding:20px;
+
+}
+
+
+
+.charts div {
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:15px;
+
+}
+
+
+
+#map {
+
+    height:400px;
+
+    margin:20px;
+
+    border-radius:15px;
+
+}
+
+
+
+.health {
+
+    background:white;
+
+    margin:20px;
+
+    padding:20px;
+
+    border-radius:15px;
+
+}
