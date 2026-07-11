@@ -71,7 +71,7 @@ async function updateDashboard() {
       data.humidity + " %";
 
     document.getElementById("pressure").innerHTML =
-      data.pressure + " hPa";
+      data.pressure + " Pa";
 
     document.getElementById("lux").innerHTML =
       data.lux + " lux";
@@ -81,6 +81,16 @@ async function updateDashboard() {
 
     document.getElementById("satellite").innerHTML =
       data.satellites;
+
+      document.getElementById("windSpeed").innerHTML =
+      data.windSpeed + " m/s";
+
+
+document.getElementById("windDirection").innerHTML =
+      data.windDirection;
+
+      document.getElementById("rainfall").innerHTML =
+      data.rainfall + " mm";
 
     document.getElementById("connectionStatus").innerHTML =
       "🟢 Online";
@@ -115,3 +125,9 @@ async function updateDashboard() {
     console.log(error);
   }
 }
+
+// Start dashboard updates
+
+updateDashboard();
+
+setInterval(updateDashboard, 5000);
