@@ -56,132 +56,62 @@ data:luxData
 
 
 
-async function updateDashboard(){
+async function updateDashboard() {
 
+  try {
 
-try{
+    const response = await fetch("/api/latest");
 
+    const data = await response.json();
 
-const response =
-await fetch("/api");
+    document.getElementById("temperature").innerHTML =
+      data.temperature + " °C";
 
+    document.getElementById("humidity").innerHTML =
+      data.humidity + " %";
 
-const data =
-await response.json();
+    document.getElementById("pressure").innerHTML =
+      data.pressure + " hPa";
 
+    document.getElementById("lux").innerHTML =
+      data.lux + " lux";
 
+    document.getElementById("gsm").innerHTML =
+      data.signal;
 
-document.getElementById("temperature")
-.innerHTML =
-data.dht_temp+" °C";
+    document.getElementById("satellite").innerHTML =
+      data.satellites;
 
+    document.getElementById("connectionStatus").innerHTML =
+      "🟢 Online";
 
+    document.getElementById("lastUpdate").innerHTML =
+      "Last Update: " +
+      new Date(data.timestamp).toLocaleTimeString();
 
-document.getElementById("humidity")
-.innerHTML =
-data.dht_hum+" %";
+    labels.push(
+      new Date().toLocaleTimeString()
+    );
 
+    tempData.push(data.temperature);
 
+    luxData.push(data.lux);
 
-document.getElementById("pressure")
-.innerHTML =
-data.pressure+" Pa";
+    if (labels.length > 20) {
+      labels.shift();
+      tempData.shift();
+      luxData.shift();
+    }
 
+    tempChart.update();
+    luxChart.update();
 
+  }
+  catch(error) {
 
-document.getElementById("lux")
-.innerHTML =
-data.lux+" lux";
+    document.getElementById("connectionStatus").innerHTML =
+      "🔴 Offline";
 
-
-
-document.getElementById("gsm")
-.innerHTML =
-data.gsm;
-
-
-
-document.getElementById("satellite")
-.innerHTML =
-data.sat;
-
-
-
-document.getElementById("connectionStatus")
-.innerHTML =
-"🟢 Online";
-
-
-
-document.getElementById("lastUpdate")
-.innerHTML =
-"Last Update: "
-+new Date().toLocaleTimeString();
-
-
-
-labels.push(
-new Date().toLocaleTimeString()
-);
-
-
-
-tempData.push(
-data.dht_temp
-);
-
-
-
-luxData.push(
-data.lux
-);
-
-
-
-if(labels.length>20){
-
-labels.shift();
-
-tempData.shift();
-
-luxData.shift();
-
+    console.log(error);
+  }
 }
-
-
-
-tempChart.update();
-
-luxChart.update();
-
-
-
-
-}
-
-catch(error){
-
-
-document.getElementById("connectionStatus")
-.innerHTML =
-"🔴 Offline";
-
-
-console.log(error);
-
-
-}
-
-
-
-}
-
-
-
-setInterval(
-updateDashboard,
-5000
-);
-
-
-updateDashboard();
