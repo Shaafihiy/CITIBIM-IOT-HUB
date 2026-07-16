@@ -27,10 +27,43 @@ let latestData = {
 // Receive weather data from Arduino + SIM800L
 app.post("/api/weather", (req, res) => {
 
-  latestData = {
-    ...req.body,
-    timestamp: new Date()
-  };
+  const data = req.body;
+
+  // New IoT Hub nested format
+  if (data.weather) {
+
+    latestData = {
+      temperature: Number(data.weather.temperature || 0),
+      humidity: Number(data.weather.humidity || 0),
+      pressure: Number(data.weather.pressure || 0),
+      lux: Number(data.weather.lux || 0),
+
+      windSpeed: Number(data.weather.windSpeed || 0),
+      windDirection: data.weather.windDirection || "N",
+
+      rainfall: Number(data.weather.rainfall || 0),
+
+      latitude: Number(data.location?.latitude || 0),
+      longitude: Number(data.location?.longitude || 0),
+
+      satellites: Number(data.location?.satellites || 0),
+
+      signal: Number(data.connectivity?.signal || 0),
+
+      timestamp: new Date()
+    };
+
+  }
+
+  // Legacy flat format
+  else {
+
+    latestData = {
+      ...data,
+      timestamp: new Date()
+    };
+
+  }
 
   console.log("Weather Update:");
   console.log(latestData);
